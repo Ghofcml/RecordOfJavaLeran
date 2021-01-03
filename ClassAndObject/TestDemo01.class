@@ -1,0 +1,41 @@
+/**
+ * 当前对象 this关键字的使用
+ * 保存信息的是Connect Connect将信息传到Message中再进行操作
+ */
+
+class Message {
+    private Connection conn;
+    public Message(Connection conn) {
+        this.conn = conn;
+    }
+    public void send(String msg) {
+        if (this.conn.build()) {
+            System.out.println("message:" + msg);
+            this.conn.close();
+        } else {
+            System.out.println("ERROR");
+        }
+    }
+}
+
+class Connection {
+    public boolean build() {
+        System.out.println("building connection");
+        return true;
+    }
+
+    public void operate(String msg) {  // 进行消息发送操作 （真正的消息发送由message类完成）
+        new Message(this).send(msg);
+    }
+
+    public void close() {
+        System.out.println("closing connection");
+    }
+}
+
+public class TestDemo01 { // mian class
+    public static void main(String[] args) { // main method
+        Connection conn = new Connection();
+        conn.operate("message");
+    }
+}
