@@ -1,0 +1,67 @@
+/** 利用构造方法的互调用 解决当前的程序的重复代码问题 **/
+public class Employee {
+    private int empno;
+    private String ename;
+    private String job;
+    private String dept;
+
+    public int getEmpno() {
+        return empno;
+    }
+
+    public void setEmpno(int empno) {
+        this.empno = empno;
+    }
+
+    public String getEname() {
+        return ename;
+    }
+
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
+
+    // 无参构造方法
+    public Employee() {
+        this(-1, "未知", "待定", "待定");
+    }
+
+    // 单参构造方法
+    public Employee(int empno) {
+        this(empno, "无名氏", "实习生", "销售部");
+    }
+
+    // 双参构造方法
+    public Employee(int empno, String ename) {
+        this(empno, ename, "工程师", "开发部");
+    }
+
+    // 四参构造方法
+    public Employee(int empno, String ename, String job, String dept) {
+        this.empno = empno;
+        this.ename = ename;
+        this.job = job;
+        this.dept = dept;
+    }
+
+    public String getInfo() {
+        return "雇员编号：" + this.empno + "、雇员名称：" + this.ename + "、雇员职位：" + this.job + "、所属部门：" + this.dept;
+    }
+
+}
